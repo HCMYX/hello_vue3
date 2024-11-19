@@ -14,22 +14,21 @@
 
 <script  lang="ts" setup name = "Preson">
     import {reactive} from  'vue'
-    import {ref} from  'vue'
 
-    let car = ref({brand:'奔驰', price:100})
+    let car = reactive({brand:'奔驰', price:100})
 
-    let games = ref([
+    let games = reactive([
         {id:'id01',name:'王者荣耀'},
         {id:'id02',name:'原神'},
         {id:'id03',name:'三国志'},
     ])
 
     function changePrice(){
-         car.value.price += 10
+         car.price += 10
     }
 
     function changeFirstName(){
-        games.value[0].name='123'
+        games[0].name='123'
     }
 </script>
 <style>
