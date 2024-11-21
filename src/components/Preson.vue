@@ -1,12 +1,6 @@
 <template>
     <div class="person">
-        <h2>一辆{{ car.brand }}车，价值{{ car.price }}万元</h2>
-        <button @click="changeBrand">修改汽车品牌</button>
-        <button @click="changePrice">修改汽车价格</button>
-        <button @click="changeCar">修改汽车</button>
-        <br>
-        <h2>当前求和：{{ sum }}</h2> 
-        <button @click="changeSum">点我sum+1</button>
+
     </div>
 </template>
 
@@ -14,24 +8,7 @@
 <script  lang="ts" setup name = "Preson">
     import {reactive} from  'vue'
     import {ref} from  'vue'
-    
-    let car = ref({brand:'奔驰', price:100})
-    let sum = ref(0)
 
-    function changeCar(){
-        //reactive 修饰的对象使用Object.assign赋值
-        //Object.assign(car,{brand:'奥迪', price:200})
-        car.value = {brand:'奥迪', price:200}
-    }
-    function changeBrand(){
-        car.value.brand = '宝马'
-    }
-    function changePrice(){
-        car.value.price += 10
-    }
-    function changeSum(){
-        sum.value += 1
-    }
 
 </script>
 <style>
