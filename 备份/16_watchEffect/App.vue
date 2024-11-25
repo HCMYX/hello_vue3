@@ -4,9 +4,12 @@
 </template>
 
 //JS 或 TS
-<script lang="ts" setup name="App">
+<script lang="ts">
     import Preson from './components/Preson.vue';
-
+    export default {
+        name: 'App', //组件名称
+        components:{Preson}
+    }
 </script>
 
 // 样式
