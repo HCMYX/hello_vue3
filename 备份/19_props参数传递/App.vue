@@ -9,6 +9,12 @@
     import { reactive } from 'vue';
     import {type Persons } from '@/types'
 
+    
+    let personList = reactive<Persons>( [
+        {id:'shfjs1', name:'张三', age:10},
+        {id:'shfjs2', name:'李四', age:20},
+        {id:'shfjs3', name:'王五', age:30}
+    ])
 </script>
 
 // 样式
