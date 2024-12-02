@@ -20,16 +20,10 @@ const router = createRouter({
             children:[
                 {
                     path:'detail',
-                    component:Detail,
-                    //第一中写法：将params参数转成props传给路由
-                    //props:true,
-                    //第二种：将任意参数作为props传给路由
-                    props(route){
-                        return route.query
-                    }
+                    component:Detail
                 }
             ]
-        }, 
+        },
         {
             name:'guanyu',
             path:'/about',
