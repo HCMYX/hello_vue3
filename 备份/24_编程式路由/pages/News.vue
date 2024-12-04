@@ -2,6 +2,7 @@
     <div class="news">
         <ul>
             <li v-for="news in newslist" :key="news.id">
+                <button @click="showNewsDetail(news)">查看</button>
                 <!-- 写法一-->
                 <!-- <RouterLink :to="`/news/detail?id=${news.id}`" >{{news.title}}</RouterLink> -->
                 <!-- 写法二-->
@@ -24,14 +25,31 @@
 
 <script setup lang="ts" name="news">
     import {  reactive } from "vue";
-    import { RouterView } from "vue-router";
-import Detail from "./Detail.vue";
+    import { RouterView, useRouter } from "vue-router";
+    import Detail from "./Detail.vue";
     const newslist = reactive([
         {id:'00001',title:'经纬之间 织就传奇',content:'内容1111111111'},
         {id:'00002',title:'3名被美方错误羁押的中国公民回国',content:'内容222222222'},
         {id:'00003',title:'塔克拉玛干沙漠被围起来了',content:'内容333333333333'},
         {id:'00004',title:'东北人暴雪后骑马出门',content:'内容44444444444444'},
     ])
+
+    const router = useRouter()
+    interface NewsInter {
+        id:string,
+        title:string,
+        content:string
+    }
+    function showNewsDetail(news:NewsInter){
+        router.push({
+            path:'/news/detail',
+            query:{
+                id:news.id,
+                title:news.title,
+                content:news.content
+            }
+        })   
+    }
 </script>
 <style scoped>
 .news{
