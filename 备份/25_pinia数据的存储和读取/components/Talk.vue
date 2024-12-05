@@ -3,24 +3,23 @@
     <div class="talk">
         <button @click="getTalk">获取一句话</button>
         <ul>
-            <li v-for="talks in talkList" :key="talks.id"> {{ talks.title }}</li>
+            <li v-for="talks in talkStore.talkList" :key="talks.id"> {{ talks.title }}</li>
         </ul>
     </div>
 </template>
 
 //JS 或 TS
 <script lang="ts" setup name="Talk">
+    import axios from 'axios'
+    import { nanoid } from "nanoid";
     import { useTalkStore } from "@/store/talk";
-    import { storeToRefs } from "pinia";
 
     const talkStore = useTalkStore()
-    const {talkList} = storeToRefs(talkStore)
 
-    talkStore.$subscribe((mutate,state)=>{
-        localStorage.setItem('talkList',JSON.stringify(state.talkList))
-    })
     async function getTalk(){
-        talkStore.getAtalk()
+        let {data} = await axios.get('https://api.uomg.com/api/rand.qinghua?format=json')
+        let obj = {id:nanoid(),title:data.content}
+        talkStore.talkList.unshift(obj)
     }
 </script>
 
